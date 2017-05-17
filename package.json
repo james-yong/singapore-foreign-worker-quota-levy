@@ -1,0 +1,28 @@
+{
+  "name": "singapore-foreign-worker-quota-levy",
+  "version": "1.0.0",
+  "description": "Singapore Foreign Worker Quota Levy",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --progress",
+    "build": "webpack"
+  },
+  "keywords": [],
+  "author": "James Yong <james.yong.erp@gmail.com> (http://github.com/james-yong)",
+  "license": "Apache",
+  "dependencies": {
+    "babel-core": "^6.17.0",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.16.0",
+    "babel-preset-react": "^6.5.0",
+    "mathjs": "^3.13.1",
+    "react": "^0.14.6",
+    "react-bootstrap": "^0.30.5",
+    "react-dom": "^0.14.6",
+    "react-redux": "^5.0.4",
+    "react-router": "^2.0.1",
+    "redux": "^3.6.0",
+    "webpack": "^1.13.0",
+    "webpack-dev-server": "^1.16.2"
+  }
+}
