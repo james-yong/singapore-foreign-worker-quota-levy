@@ -1,4 +1,5 @@
 var webpack = require("webpack");
+var path = require("path");
 
 module.exports = {
   entry: './src/app.js',
@@ -8,12 +9,14 @@ module.exports = {
     publicPath: "",
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.jsx?$/,
-        exclude: /node_modules/,
+        include: [
+            path.resolve(__dirname, './src')
+        ],
         loader: 'babel-loader',
-        query: { presets: [ 'es2015', 'react' ] }
+        query: { presets: [ ['es2015', { "modules": false }], 'react' ] }
       }
     ]
   },

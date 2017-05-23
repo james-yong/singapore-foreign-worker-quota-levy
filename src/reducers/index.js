@@ -16,6 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  *******************************************************************************/
+// @flow
 import { combineReducers } from 'redux';
 import ActiveSector from './reducer_sector';
 import NumLocalEmp from './reducer_numLocalEmp';

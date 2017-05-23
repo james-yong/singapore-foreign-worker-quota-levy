@@ -16,6 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  *******************************************************************************/
+// @flow
 import React from 'react';
 import ReactDOM, { render } from 'react-dom';
 import { Provider } from 'react-redux';

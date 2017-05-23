@@ -16,6 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  *******************************************************************************/
+// @flow
 import React from 'react';
 import renderIf from '../conditions/renderIf.jsx';
 import SectorServices from './SectorServices.jsx'

@@ -16,6 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  *******************************************************************************/
+// @flow
 import React from 'react';
 import { Panel, Form, FormGroup, Col, ControlLabel, FormControl, Button, HelpBlock, Table } from 'react-bootstrap';
 import {connect} from 'react-redux'
@@ -25,6 +26,7 @@ import math from 'mathjs';
 import renderIf from '../conditions/renderIf.jsx';
 
 class SectorServices extends React.Component {
+    styles: Object;
 
     constructor(props) {
         super(props);
@@ -32,43 +34,42 @@ class SectorServices extends React.Component {
           number: 'BigNumber',  // Default type of number: 'number' (default), 'BigNumber', or 'Fraction'
           precision: 20         // Number of significant digits for BigNumbers
         });
-        this.totalEmp = this.totalEmp.bind(this);
-        this.totalEmpForeign = this.totalEmpForeign.bind(this);
-        this.totalEmpSPass = this.totalEmpSPass.bind(this);
-        this.totalEmpChnWPass = this.totalEmpChnWPass.bind(this);
-        this.totalEmpMysWPass = this.totalEmpMysWPass.bind(this);
-        this.totalBasicWPass = this.totalBasicWPass.bind(this);
-        this.totalHigherWPass = this.totalHigherWPass.bind(this);
-        this.totalLevy = this.totalLevy.bind(this);
+        (this: any).totalEmp = this.totalEmp.bind(this);
+        (this: any).totalEmpForeign = this.totalEmpForeign.bind(this);
+        (this: any).totalEmpSPass = this.totalEmpSPass.bind(this);
+        (this: any).totalEmpChnWPass = this.totalEmpChnWPass.bind(this);
+        (this: any).totalEmpMysWPass = this.totalEmpMysWPass.bind(this);
+        (this: any).totalBasicWPass = this.totalBasicWPass.bind(this);
+        (this: any).totalHigherWPass = this.totalHigherWPass.bind(this);
+        (this: any).totalLevy = this.totalLevy.bind(this);
 
-        this.quotaSPass = this.quotaSPass.bind(this);
-        this.quotaSPassTier1 = this.quotaSPassTier1.bind(this);
-        this.quotaChnWPass = this.quotaChnWPass.bind(this);
-        this.quotaMysWPass = this.quotaMysWPass.bind(this);
-        this.quotaWPassTier1 = this.quotaWPassTier1.bind(this);
-        this.quotaWPassTier2 = this.quotaWPassTier2.bind(this);
-        this.quotaWPassTier3 = this.quotaWPassTier3.bind(this);
+        (this: any).quotaSPass = this.quotaSPass.bind(this);
+        (this: any).quotaSPassTier1 = this.quotaSPassTier1.bind(this);
+        (this: any).quotaChnWPass = this.quotaChnWPass.bind(this);
+        (this: any).quotaMysWPass = this.quotaMysWPass.bind(this);
+        (this: any).quotaWPassTier1 = this.quotaWPassTier1.bind(this);
+        (this: any).quotaWPassTier2 = this.quotaWPassTier2.bind(this);
+        (this: any).quotaWPassTier3 = this.quotaWPassTier3.bind(this);
 
-        this.changeNumLocalEmp = this.changeNumLocalEmp.bind(this);
-        this.changeNumSPass = this.changeNumSPass.bind(this);
-        this.changeNumChnBasicWPass = this.changeNumChnBasicWPass.bind(this);
-        this.changeNumChnHigherWPass = this.changeNumChnHigherWPass.bind(this);
-        this.changeNumMysBasicWPass = this.changeNumMysBasicWPass.bind(this);
-        this.changeNumMysHigherWPass = this.changeNumMysHigherWPass.bind(this);
+        (this: any).changeNumLocalEmp = this.changeNumLocalEmp.bind(this);
+        (this: any).changeNumSPass = this.changeNumSPass.bind(this);
+        (this: any).changeNumChnBasicWPass = this.changeNumChnBasicWPass.bind(this);
+        (this: any).changeNumChnHigherWPass = this.changeNumChnHigherWPass.bind(this);
+        (this: any).changeNumMysBasicWPass = this.changeNumMysBasicWPass.bind(this);
+        (this: any).changeNumMysHigherWPass = this.changeNumMysHigherWPass.bind(this);
 
-        this.feedbackIfQuotaIsNegative = this.feedbackIfQuotaIsNegative.bind(this);
+        (this: any).feedbackIfQuotaIsNegative = this.feedbackIfQuotaIsNegative.bind(this);
 
-        this.renderSPassPanels = this.renderSPassPanels.bind(this);
-        this.renderSPassPanel = this.renderSPassPanel.bind(this);
-        this.calculateSPassPanel = this.calculateSPassPanel.bind(this);
-        this.renderWPassPanels = this.renderWPassPanels.bind(this);
-        this.renderWPassPanel = this.renderWPassPanel.bind(this);
-        this.calculateWPassPanel = this.calculateWPassPanel.bind(this);
+        (this: any).renderSPassPanels = this.renderSPassPanels.bind(this);
+        (this: any).renderSPassPanel = this.renderSPassPanel.bind(this);
+        (this: any).calculateSPassPanel = this.calculateSPassPanel.bind(this);
+        (this: any).renderWPassPanels = this.renderWPassPanels.bind(this);
+        (this: any).renderWPassPanel = this.renderWPassPanel.bind(this);
+        (this: any).calculateWPassPanel = this.calculateWPassPanel.bind(this);
         
         this.styles = {
           textRight: {textAlign: 'right'},
           contentCentered: {display: 'flex', justifyContent: 'center'}
-
         };
     }
 
@@ -108,7 +109,7 @@ class SectorServices extends React.Component {
       let sum = 0;
       let x1 = {higherWPass:this.totalHigherWPass(), basicWPass:this.totalBasicWPass(), levyWPass: 0 };
       tiers.map((val) => {
-        if (x1.higherWPass>0 || x1.basicWPass>0){
+        if ((x1: Object).higherWPass>0 || (x1: Object).basicWPass>0){
           this.calculateWPassPanel(val, x1);
         } 
       });
@@ -117,7 +118,7 @@ class SectorServices extends React.Component {
       let panels = [1,2];
       x1 = {"sPass":this.totalEmpSPass(), "levySPass":0 };
       panels.map((val) => {
-        if (x1.sPass>0){
+        if ((x1: Object).sPass>0){
           this.calculateSPassPanel(val, x1)
         } 
       });
@@ -216,15 +217,15 @@ class SectorServices extends React.Component {
         var higherWPassAllocation = 0;
         var basicWPassAllocation = 0;
 
-        if (quota>0 && x1.higherWPass>0){
-          higherWPassAllocation = Math.min(quota, x1.higherWPass);
-          x1.higherWPass -= higherWPassAllocation;
+        if (quota>0 && (x1: Object).higherWPass>0){
+          higherWPassAllocation = Math.min(quota, (x1: Object).higherWPass);
+          (x1: Object).higherWPass -= higherWPassAllocation;
           quota -= higherWPassAllocation;
         }
 
-        if (quota>0 && x1.basicWPass>0){
-          basicWPassAllocation = Math.min(quota, x1.basicWPass);
-          x1.basicWPass -= basicWPassAllocation
+        if (quota>0 && (x1: Object).basicWPass>0){
+          basicWPassAllocation = Math.min(quota, (x1:Object).basicWPass);
+          (x1: Object).basicWPass -= basicWPassAllocation
           quota -= basicWPassAllocation
         }
 
@@ -246,7 +247,7 @@ class SectorServices extends React.Component {
         }
         var higherWPassAllocationAmount = math.chain(higherWPassAllocation).multiply(higherWPassAllocationRate).done();
         var basicWPassAllocationAmount = math.chain(basicWPassAllocation).multiply(basicWPassAllocationRate).done();
-        x1.levyWPass += (higherWPassAllocationAmount + basicWPassAllocationAmount);
+        (x1: Object).levyWPass += (higherWPassAllocationAmount + basicWPassAllocationAmount);
 
         return {higherWPassAllocation, higherWPassAllocationRate, higherWPassAllocationAmount, basicWPassAllocation, basicWPassAllocationRate, basicWPassAllocationAmount};
 
@@ -293,9 +294,9 @@ class SectorServices extends React.Component {
 
         var sPassAllocation = 0;
 
-        if (quota>0 && x1.sPass>0){
-          sPassAllocation = Math.min(quota, x1.sPass);
-          x1.sPass -= sPassAllocation;
+        if (quota>0 && (x1: Object).sPass>0){
+          sPassAllocation = Math.min(quota, (x1: Object).sPass);
+          (x1: Object).sPass -= sPassAllocation;
           quota -= sPassAllocation;
         }
 
@@ -309,7 +310,7 @@ class SectorServices extends React.Component {
           } break;
         }
         var sPassAllocationAmount = math.chain(sPassAllocation).multiply(sPassAllocationRate).done();
-        x1.levySPass += sPassAllocationAmount;
+        (x1: Object).levySPass += sPassAllocationAmount;
 
         return {sPassAllocation, sPassAllocationRate, sPassAllocationAmount};
 

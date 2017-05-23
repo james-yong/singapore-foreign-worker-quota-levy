@@ -16,6 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  *******************************************************************************/
+// @flow
 import React from 'react';
 import SelectedSector from "./SelectedSector.jsx"
 import SectorSelector from './SectorSelector.jsx';

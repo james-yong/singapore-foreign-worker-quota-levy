@@ -16,7 +16,8 @@
  * specific language governing permissions and limitations
  * under the License.
  *******************************************************************************/
-export default function(state = null, action){
+// @flow
+export default function(state: ?Object = null, action: Object){
     switch(action.type){
         case 'UPDATE_NUM_MYS_BASIC_W_PASS':
         return action.payload;

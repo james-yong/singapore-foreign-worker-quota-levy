@@ -16,6 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  *******************************************************************************/
+// @flow
 import React from 'react';
 import { Form, FormGroup, Col, ControlLabel, FormControl, HelpBlock } from 'react-bootstrap';
 import {connect} from 'react-redux'
@@ -26,7 +27,7 @@ class SectorSelector extends React.Component {
 
     constructor(props) {
         super(props);
-        this.myServiceChangeHandler = this.myServiceChangeHandler.bind(this);
+        (this: any).myServiceChangeHandler = this.myServiceChangeHandler.bind(this);
     }
 
     myServiceChangeHandler(event){

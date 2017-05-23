@@ -16,7 +16,8 @@
  * specific language governing permissions and limitations
  * under the License.
  *******************************************************************************/
-export function selectSector(sector){
+// @flow
+export function selectSector(sector: string){
     // selectSector is an ActionCreator, it needs to return an action,
     // an object with a type property. 
     return {
@@ -25,42 +26,42 @@ export function selectSector(sector){
     };
 }
 
-export function updateNumLocalEmp(value){
+export function updateNumLocalEmp(value: string){
     return {
         type: 'UPDATE_NUM_LOCAL_EMP',
         payload: value
     };
 }
 
-export function updateNumSPass(value){
+export function updateNumSPass(value: string){
     return {
         type: 'UPDATE_NUM_S_PASS',
         payload: value
     };
 }
 
-export function updateNumChnBasicWPass(value){
+export function updateNumChnBasicWPass(value: string){
     return {
         type: 'UPDATE_NUM_CHN_BASIC_W_PASS',
         payload: value
     };
 }
 
-export function updateNumChnHigherWPass(value){
+export function updateNumChnHigherWPass(value: string){
     return {
         type: 'UPDATE_NUM_CHN_HIGHER_W_PASS',
         payload: value
     };
 }
 
-export function updateNumMysBasicWPass(value){
+export function updateNumMysBasicWPass(value: string){
     return {
         type: 'UPDATE_NUM_MYS_BASIC_W_PASS',
         payload: value
     };
 }
 
-export function updateNumMysHigherWPass(value){
+export function updateNumMysHigherWPass(value: string){
     return {
         type: 'UPDATE_NUM_MYS_HIGHER_W_PASS',
         payload: value

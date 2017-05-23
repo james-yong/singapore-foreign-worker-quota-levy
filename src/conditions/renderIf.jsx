@@ -16,9 +16,10 @@
  * specific language governing permissions and limitations
  * under the License.
  *******************************************************************************/
+// @flow
 import React, { Component } from 'react';
 
-export default function renderIf(condition, content) {
+export default function renderIf(condition: boolean, content: mixed) {
     if (condition) {
         return content;
     } else {
