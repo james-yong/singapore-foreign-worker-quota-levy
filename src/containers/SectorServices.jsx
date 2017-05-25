@@ -17,12 +17,12 @@
  * under the License.
  *******************************************************************************/
 // @flow
-import React from 'react';
-import { Panel, Form, FormGroup, Col, ControlLabel, FormControl, Button, HelpBlock, Table } from 'react-bootstrap';
-import {connect} from 'react-redux'
-import {updateNumLocalEmp, updateNumSPass, updateNumChnBasicWPass, updateNumChnHigherWPass, updateNumMysBasicWPass, updateNumMysHigherWPass} from '../actions/index';
-import {bindActionCreators} from 'redux';
 import math from 'mathjs';
+import React from 'react';
+import { Panel, Form, Col, ControlLabel, FormControl, HelpBlock, Table } from 'react-bootstrap';
+import {connect} from 'react-redux'
+import {Field, reduxForm, formValueSelector} from 'redux-form';
+import InputField from '../components/input_field.jsx';
 import renderIf from '../conditions/renderIf.jsx';
 
 class SectorServices extends React.Component {
@@ -50,13 +50,6 @@ class SectorServices extends React.Component {
         (this: any).quotaWPassTier1 = this.quotaWPassTier1.bind(this);
         (this: any).quotaWPassTier2 = this.quotaWPassTier2.bind(this);
         (this: any).quotaWPassTier3 = this.quotaWPassTier3.bind(this);
-
-        (this: any).changeNumLocalEmp = this.changeNumLocalEmp.bind(this);
-        (this: any).changeNumSPass = this.changeNumSPass.bind(this);
-        (this: any).changeNumChnBasicWPass = this.changeNumChnBasicWPass.bind(this);
-        (this: any).changeNumChnHigherWPass = this.changeNumChnHigherWPass.bind(this);
-        (this: any).changeNumMysBasicWPass = this.changeNumMysBasicWPass.bind(this);
-        (this: any).changeNumMysHigherWPass = this.changeNumMysHigherWPass.bind(this);
 
         (this: any).feedbackIfQuotaIsNegative = this.feedbackIfQuotaIsNegative.bind(this);
 
@@ -156,25 +149,6 @@ class SectorServices extends React.Component {
     // Service Sector: Above 25% to 40% of the total workforce 
     quotaWPassTier3(){
         return math.chain(this.totalEmp()).multiply(math.bignumber(0.15)).floor().done();
-    }
-
-    changeNumLocalEmp(event){
-        this.props.updateNumLocalEmp(event.target.value)
-    }
-    changeNumSPass(event){
-        this.props.updateNumSPass(event.target.value)
-    }
-    changeNumChnBasicWPass(event){
-        this.props.updateNumChnBasicWPass(event.target.value)
-    }
-    changeNumChnHigherWPass(event){
-        this.props.updateNumChnHigherWPass(event.target.value)
-    }
-    changeNumMysBasicWPass(event){
-        this.props.updateNumMysBasicWPass(event.target.value)
-    }
-    changeNumMysHigherWPass(event){
-        this.props.updateNumMysHigherWPass(event.target.value)
     }
 
     feedbackIfQuotaIsNegative(quota){
@@ -347,7 +321,16 @@ class SectorServices extends React.Component {
                     Local employees are Singapore citizens or PRs earning at least the full-time equivalent salary.
                     </td>
                     <td>
-                    <Col sm={12}><FormControl type="text" id="fullTime" value={this.props.numLocalEmp} onChange={this.changeNumLocalEmp} style={this.styles.textRight}/></Col>
+                      <Col sm={12}>
+                        <Field
+                          component={InputField}
+                          name="numLocalEmp"
+                          placeholder=""
+                          type="text"
+                          style={this.styles.textRight}
+                       />
+                      </Col>
+                      
                     </td>
                     <td>
                       <div style={this.styles.contentCentered}>N/A</div>
@@ -363,7 +346,13 @@ class SectorServices extends React.Component {
                       </td>
                       <td>
                         <Col sm={12}>
-                            <FormControl type="text" id="sPassHolder" value={this.props.numSPass} onChange={this.changeNumSPass} style={this.styles.textRight} />
+                            <Field
+                                component={InputField}
+                                name="numSPass"
+                                placeholder=""
+                                type="text"
+                                style={this.styles.textRight}
+                            />
                         </Col>
                       </td>
                       <td>
@@ -380,11 +369,23 @@ class SectorServices extends React.Component {
                       </td>
                       <td>
                         <Col sm={6}>
-                            <FormControl type="text" id="prcSkilled" value={this.props.numChnHigherWPass} onChange={this.changeNumChnHigherWPass} style={this.styles.textRight}/>
+                            <Field
+                                component={InputField}
+                                name="numChnHigherWPass"
+                                placeholder=""
+                                type="text"
+                                style={this.styles.textRight}
+                            />
                             <HelpBlock>Higher-Skilled</HelpBlock>
                         </Col>
                         <Col sm={6}>
-                            <FormControl type="text" id="prcUnskilled" value={this.props.numChnBasicWPass} onChange={this.changeNumChnBasicWPass} style={this.styles.textRight}/>
+                            <Field
+                                component={InputField}
+                                name="numChnBasicWPass"
+                                placeholder=""
+                                type="text"
+                                style={this.styles.textRight}
+                            />
                             <HelpBlock>Basic-Skilled</HelpBlock>
                         </Col>
                       </td>
@@ -402,11 +403,23 @@ class SectorServices extends React.Component {
                     </td>
                     <td>
                       <Col sm={6}>
-                          <FormControl type="text" id="malSkilled" value={this.props.numMysHigherWPass} onChange={this.changeNumMysHigherWPass} style={this.styles.textRight}/>
+                          <Field
+                                component={InputField}
+                                name="numMysHigherWPass"
+                                placeholder=""
+                                type="text"
+                                style={this.styles.textRight}
+                            />
                           <HelpBlock>Higher-Skilled</HelpBlock>
                       </Col>
                       <Col sm={6}>
-                          <FormControl type="text" id="malUnskilled" value={this.props.numMysBasicWPass} onChange={this.changeNumMysBasicWPass} style={this.styles.textRight}/>
+                          <Field
+                                component={InputField}
+                                name="numMysBasicWPass"
+                                placeholder=""
+                                type="text"
+                                style={this.styles.textRight}
+                            />
                           <HelpBlock>Basic-Skilled</HelpBlock>
                       </Col>
                     </td>
@@ -426,18 +439,8 @@ class SectorServices extends React.Component {
     }
 }
 
-function mapStateToProps(state){
-    return {
-        numLocalEmp: state.numLocalEmp,
-        numSPass: state.numSPass,
-        numChnBasicWPass: state.numChnBasicWPass,
-        numChnHigherWPass: state.numChnHigherWPass,
-        numMysBasicWPass: state.numMysBasicWPass,
-        numMysHigherWPass: state.numMysHigherWPass
-    };
-}
-function mapDispatchToProps(dispatch){
-    return bindActionCreators({updateNumLocalEmp, updateNumSPass, updateNumChnBasicWPass, updateNumChnHigherWPass, updateNumMysBasicWPass, updateNumMysHigherWPass}, dispatch);
-}
+const SectorServicesForm = reduxForm({form:"SectorSelector"})(SectorServices)
 
-export default connect(mapStateToProps, mapDispatchToProps)(SectorServices);
+export default connect(
+  state => formValueSelector('SectorSelector')(state, 'numLocalEmp', 'numSPass', 'numChnBasicWPass', 'numChnHigherWPass', 'numMysBasicWPass', 'numMysHigherWPass')
+)(SectorServicesForm);

@@ -28,7 +28,7 @@ export default class QuotaLevy extends React.Component {
   render() {
     return (
       <div>
-          <Panel header="Singapore Foreign Worker Quota / Levy Calculator" footer="&copy; 2017">
+          <Panel header="Singapore Foreign Worker Quota / Levy Calculator" footer="&copy; 2017 Created by James Yong">
               <SectorSelector/>
               <SelectedSector/>
           </Panel>

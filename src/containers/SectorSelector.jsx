@@ -20,8 +20,8 @@
 import React from 'react';
 import { Form, FormGroup, Col, ControlLabel, FormControl, HelpBlock } from 'react-bootstrap';
 import {connect} from 'react-redux'
-import {selectSector} from '../actions/index';
 import {bindActionCreators} from 'redux';
+import {selectSector} from '../actions/index';
 
 class SectorSelector extends React.Component {
 

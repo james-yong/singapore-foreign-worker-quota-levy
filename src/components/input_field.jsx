@@ -17,10 +17,31 @@
  * under the License.
  *******************************************************************************/
 // @flow
-export default function(state: ?Object = null, action: Object){
-    switch(action.type){
-        case 'UPDATE_NUM_MYS_HIGHER_W_PASS':
-        return action.payload;
-    }
-    return state;
+import React from 'react';
+import { FormControl } from 'react-bootstrap';
+
+class InputField extends React.Component {
+
+  render () {
+    const {
+      input,
+      type,
+      placeholder,
+      meta: {
+        error,
+        touched
+      },
+      style
+    } = this.props;
+    return (
+        <FormControl {...input} {...{type, placeholder}} style={style} />
+    );
+  }
 }
+
+InputField.propTypes = {
+    placeholder: React.PropTypes.string,
+    type: React.PropTypes.string.isRequired
+};
+
+export default InputField;

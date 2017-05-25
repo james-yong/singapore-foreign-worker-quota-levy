@@ -18,22 +18,12 @@
  *******************************************************************************/
 // @flow
 import { combineReducers } from 'redux';
+import { reducer as reduxFormReducer } from 'redux-form';
 import ActiveSector from './reducer_sector';
-import NumLocalEmp from './reducer_numLocalEmp';
-import NumSPass from './reducer_numSPass';
-import NumChnBasicWPass from './reducer_numChnBasicWPass';
-import NumChnHigherWPass from './reducer_numChnHigherWPass';
-import NumMysBasicWPass from './reducer_numMysBasicWPass';
-import NumMysHigherWPass from './reducer_numMysHigherWPass';
 
 const rootReducer = combineReducers({
   sector: ActiveSector,
-  numLocalEmp: NumLocalEmp,
-  numSPass: NumSPass,
-  numChnBasicWPass: NumChnBasicWPass,
-  numChnHigherWPass: NumChnHigherWPass,
-  numMysBasicWPass: NumMysBasicWPass,
-  numMysHigherWPass: NumMysHigherWPass
+  form: reduxFormReducer
 });
 
 export default rootReducer;
