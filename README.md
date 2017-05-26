@@ -22,15 +22,6 @@ Navigate to localhost:8008
 
 From browser:
 ```
-Navigate to https://james-yong.github.io/demo/singapore-foreign-worker-quota-levy.html
-```
-or click [here](https://james-yong.github.io/demo/singapore-foreign-worker-quota-levy.html)
-
-
-### Blog
-
-From browser:
-```
 Navigate to https://james-yong.github.io/blog/2017/05/26/singapore-foreign-worker-quota-levy
 ```
 or click [here](https://james-yong.github.io/blog/2017/05/26/singapore-foreign-worker-quota-levy)
