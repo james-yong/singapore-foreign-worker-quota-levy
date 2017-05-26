@@ -1,5 +1,5 @@
 # Singapore Foreign Worker Quota / Levy
-Calculate foreign worker quota and levy in Singapore, using React JS and Redux.
+Calculate foreign worker quota and levy in Singapore, using React JS and Redux. See demo from [blog](https://james-yong.github.io/blog/2017/05/26/singapore-foreign-worker-quota-levy){:target:"_blank"}.
 
 
 ### Getting started
@@ -16,5 +16,3 @@ From browser:
 ```
 Navigate to localhost:8008
 ```
-
-
